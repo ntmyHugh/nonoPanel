@@ -1,0 +1,117 @@
+.card {
+  flex: 0 0 auto;
+  height: 100%;
+  background: var(--card-glass);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  padding: 22px 24px 18px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  z-index: 1;
+}
+
+.card:hover {
+  border-color: var(--card-border-hover);
+  transform: translateY(-1px);
+  box-shadow: 18px 24px 38px rgba(145, 124, 74, 0.26), -6px -6px 14px rgba(247, 238, 214, 0.34);
+}
+
+.card::selection {
+  background: transparent;
+}
+
+.clock-card {
+  width: 430px;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background: linear-gradient(150deg, rgba(221, 236, 189, 0.98), rgba(195, 218, 149, 0.94));
+  border-color: rgba(87, 141, 63, 0.28);
+}
+
+.clock-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 16%, rgba(248, 243, 224, 0.32), transparent 22%),
+    linear-gradient(145deg, rgba(248, 243, 224, 0.18), transparent 42%);
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
+  opacity: 1;
+}
+
+.clock-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 60%, var(--clock-accent-soft), transparent);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.weather-card {
+  width: 880px;
+  background: var(--wt-card, linear-gradient(150deg, rgba(228, 218, 200, 0.97), rgba(208, 194, 170, 0.94)));
+  border-color: var(--wt-card-b, rgba(158, 132, 94, 0.22));
+}
+
+.weather-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255, 248, 235, 0.28), transparent 28%),
+    radial-gradient(circle at 80% 78%, rgba(74, 136, 120, 0.10), transparent 32%);
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.weather-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 40% at 30% 30%, var(--weather-accent-soft), transparent);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.calendar-card {
+  width: 592px;
+  flex: 1;
+  background: linear-gradient(150deg, rgba(244, 225, 170, 0.98), rgba(232, 202, 122, 0.94));
+  border-color: rgba(200, 139, 24, 0.3);
+}
+
+.calendar-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background:
+    radial-gradient(circle at 22% 14%, rgba(255, 244, 214, 0.26), transparent 22%),
+    radial-gradient(circle at 82% 82%, rgba(239, 173, 37, 0.24), transparent 28%);
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
+  opacity: 1;
+}
+
+.calendar-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 70% 70%, var(--calendar-accent-soft), transparent);
+  pointer-events: none;
+  border-radius: inherit;
+}

@@ -1,0 +1,189 @@
+.settings-page {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(243, 234, 215, 0.78);
+  z-index: 80;
+}
+
+.settings-container {
+  width: 920px;
+  max-width: calc(100% - 80px);
+  background: var(--card-glass);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 24px 26px;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.settings-title {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.close-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(245, 236, 209, 0.96), rgba(223, 207, 162, 0.94));
+  border: 1px solid rgba(123, 149, 106, 0.16);
+  color: var(--text-secondary);
+  cursor: pointer;
+  box-shadow: 8px 10px 18px rgba(179, 163, 125, 0.18), -4px -4px 10px rgba(255, 255, 255, 0.72);
+}
+
+.settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-section-title {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.settings-group {
+  background: linear-gradient(145deg, rgba(244, 233, 203, 0.96), rgba(228, 210, 166, 0.94));
+  border: 1px solid rgba(123, 149, 106, 0.14);
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: inset 6px 6px 14px rgba(211, 197, 161, 0.2), inset -6px -6px 14px rgba(255, 255, 255, 0.62);
+}
+
+.city-settings {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.city-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.city-block h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.city-help {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.city-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 10px;
+}
+
+.city-inputs input {
+  min-width: 0;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(123, 149, 106, 0.18);
+  background: linear-gradient(145deg, rgba(244, 233, 203, 0.96), rgba(227, 209, 164, 0.94));
+  color: var(--text-primary);
+  padding: 0 12px;
+  box-shadow: inset 4px 4px 10px rgba(213, 198, 162, 0.2), inset -4px -4px 10px rgba(255, 255, 255, 0.66);
+}
+
+.city-inputs input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.search-btn {
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(209, 234, 245, 0.96), rgba(163, 214, 238, 0.94));
+  border: 1px solid rgba(76, 169, 214, 0.24);
+  color: var(--weather-accent-strong);
+  cursor: pointer;
+  box-shadow: 6px 8px 14px rgba(128, 174, 192, 0.16), -2px -2px 8px rgba(255, 255, 255, 0.66);
+}
+
+.theme-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.theme-option input {
+  display: none;
+}
+
+.theme-label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(244, 233, 203, 0.96), rgba(227, 209, 164, 0.94));
+  border: 1px solid rgba(123, 149, 106, 0.14);
+  cursor: pointer;
+  box-shadow: 6px 8px 14px rgba(179, 163, 125, 0.12), -2px -2px 8px rgba(255, 255, 255, 0.66);
+  transition: var(--transition);
+}
+
+.theme-option input:checked + .theme-label {
+  border-color: rgba(76, 169, 214, 0.28);
+  background: linear-gradient(145deg, rgba(220, 240, 248, 1), rgba(181, 219, 237, 0.96));
+}
+
+.theme-preview {
+  position: relative;
+  height: 90px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.theme-preview .theme-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.theme-preview .theme-card-preview {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 18px;
+  bottom: 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(123, 149, 106, 0.16);
+}
+
+.theme-preview-dark .theme-bg {
+  background: linear-gradient(135deg, #f8f3e7 0%, #eef7e5 50%, #fff2e8 100%);
+}
+
+.theme-preview-dark .theme-card-preview {
+  background: linear-gradient(145deg, rgba(248, 254, 240, 0.94), rgba(232, 241, 217, 0.94));
+}
+
+.theme-preview-colorful .theme-bg {
+  background: linear-gradient(135deg, #fff1c5 0%, #e4f7cf 34%, #d8f5f4 68%, #ffdfe5 100%);
+}
+
+.theme-preview-colorful .theme-card-preview {
+  background: linear-gradient(145deg, rgba(255, 252, 246, 0.96), rgba(245, 223, 199, 0.94));
+}

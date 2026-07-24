@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cargo build *)",
+      "Bash(taskkill /F /IM pannel.exe)",
+      "Bash(cargo check *)",
+      "Bash(cargo doc *)",
+      "Bash(rg \"SystemMediaTransportControls\" target/debug/.fingerprint/ -r --files-with-matches)"
+    ]
+  }
+}

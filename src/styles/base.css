@@ -1,0 +1,238 @@
+:root {
+  --bg-root: #e8dcc0;
+  --bg-surface: #f0e2b8;
+  --bg-overlay: rgba(242, 232, 205, 0.78);
+  --card-glass: linear-gradient(145deg, rgba(247, 238, 212, 0.94), rgba(231, 217, 175, 0.92));
+  --card-border: rgba(104, 124, 78, 0.26);
+  --card-border-hover: rgba(76, 109, 72, 0.4);
+  --card-shadow: 16px 18px 32px rgba(145, 124, 74, 0.22), -8px -8px 18px rgba(248, 240, 219, 0.42);
+  --card-shadow-pressed: inset 7px 7px 16px rgba(191, 173, 126, 0.34), inset -6px -6px 14px rgba(251, 245, 229, 0.42);
+  --card-radius: 30px;
+  --surface-raised: rgba(246, 236, 210, 0.92);
+  --surface-soft: rgba(236, 224, 187, 0.9);
+  --surface-tint: rgba(226, 208, 156, 0.78);
+  --surface-strong: rgba(217, 192, 132, 0.92);
+  --surface-press: rgba(221, 204, 160, 0.96);
+  --clock-accent: #6c9230;
+  --clock-accent-soft: rgba(108, 146, 48, 0.28);
+  --clock-accent-strong: #3f5d1d;
+  --weather-accent: #4a8878;
+  --weather-accent-soft: rgba(74, 136, 120, 0.24);
+  --weather-accent-strong: #2e5a50;
+  --calendar-accent: #d69518;
+  --calendar-accent-soft: rgba(214, 149, 24, 0.3);
+  --calendar-accent-strong: #6f4a00;
+  --blossom: #bf5f77;
+  --blossom-soft: rgba(191, 95, 119, 0.24);
+  --mint: #5f8d55;
+  --sky: #267eaa;
+  --sun: #d69518;
+  --amber: #d69518;
+  --amber-dim: rgba(214, 149, 24, 0.78);
+  --amber-glow: rgba(214, 149, 24, 0.22);
+  --ice: #267eaa;
+  --ice-dim: rgba(38, 126, 170, 0.78);
+  --ice-glow: rgba(38, 126, 170, 0.2);
+  --violet: #b5674c;
+  --violet-dim: rgba(181, 103, 76, 0.76);
+  --violet-glow: rgba(181, 103, 76, 0.18);
+  --text-primary: #253229;
+  --text-secondary: rgba(37, 50, 41, 0.72);
+  --text-tertiary: rgba(37, 50, 41, 0.46);
+  --text-inverse: #fffdf8;
+  --ok: #4da46c;
+  --warn: #d58c1f;
+  --err: #d36267;
+  --accent: #4ca9d6;
+  --accent-strong: #2e718d;
+  --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #deceb0 0%, #d4dec0 34%, #c6d8d2 68%, #e3c8bb 100%);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--text-primary);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  position: relative;
+  background-color: var(--bg-root);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 760px 300px at 16% 18%, rgba(108, 146, 48, 0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 740px 280px at 52% 84%, rgba(214, 149, 24, 0.22) 0%, transparent 72%),
+    radial-gradient(ellipse 580px 280px at 88% 22%, rgba(191, 95, 119, 0.18) 0%, transparent 72%),
+    linear-gradient(180deg, rgba(255, 248, 232, 0.06), rgba(255, 248, 232, 0));
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 18px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 246, 226, 0.26);
+  background:
+    radial-gradient(circle at top left, rgba(255, 247, 230, 0.22), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(255, 247, 230, 0.12), transparent 24%);
+  box-shadow: inset 0 1px 0 rgba(255, 247, 230, 0.22);
+  pointer-events: none;
+  z-index: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  outline: none;
+}
+
+.fixed-btn {
+  position: fixed;
+  top: 8px;
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(245, 236, 209, 0.96), rgba(223, 207, 162, 0.94));
+  color: var(--text-primary);
+  border: 1px solid rgba(123, 149, 106, 0.18);
+  box-shadow: 10px 12px 22px rgba(164, 143, 88, 0.2), -4px -4px 10px rgba(247, 238, 214, 0.36);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition), border-color var(--transition), background var(--transition);
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  z-index: 50;
+}
+
+.fixed-btn.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.fixed-btn:hover {
+  background: linear-gradient(145deg, rgba(233, 242, 208, 0.98), rgba(214, 232, 186, 0.94));
+  border-color: rgba(84, 120, 80, 0.28);
+}
+
+#fullscreen-btn {
+  left: 8px;
+}
+
+#settings-btn {
+  left: 58px;
+}
+
+.page-indicator {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 40;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(110, 134, 88, 0.22);
+  border: 1px solid rgba(110, 134, 88, 0.18);
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+}
+
+.indicator-dot:hover {
+  transform: scale(1.16);
+  background: rgba(110, 134, 88, 0.38);
+}
+
+.indicator-dot.active {
+  transform: scale(1.28);
+  background: linear-gradient(135deg, #7fc172, #efbc47);
+  border-color: rgba(84, 120, 80, 0.42);
+  box-shadow: 0 4px 10px rgba(127, 193, 114, 0.25);
+}
+
+.pages-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.page-content {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+.page-content.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  padding: 18px 22px;
+  gap: 18px;
+  width: 100%;
+  height: 100%;
+}
+
+body.colorful-theme {
+  background: linear-gradient(135deg, #e1b750 0%, #afc95a 34%, #7fc2c8 68%, #d58da4 100%);
+}
+
+body.colorful-theme .card {
+  background: linear-gradient(145deg, rgba(244, 233, 203, 0.98), rgba(230, 213, 166, 0.96)) !important;
+  border-color: rgba(105, 128, 87, 0.24) !important;
+}
+
+body.colorful-theme .settings-page {
+  background: rgba(230, 210, 166, 0.74) !important;
+}
+
+body.colorful-theme .settings-container {
+  background: linear-gradient(145deg, rgba(244, 233, 203, 0.98), rgba(230, 213, 166, 0.96)) !important;
+}
+
+/* Responsive: min-width to prevent layout breakage on narrow windows */
+@media (max-width: 960px) {
+  .pages-container {
+    min-width: 960px;
+    overflow-x: auto;
+  }
+}

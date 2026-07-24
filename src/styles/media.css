@@ -1,0 +1,91 @@
+/* ── Media Widget — minimal, no display override ── */
+/* display is controlled by JS inline style (flex / none) */
+
+.media-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(121, 191, 96, 0.18), rgba(239, 188, 71, 0.22), transparent);
+  margin-bottom: 6px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.media-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  flex-shrink: 0;
+}
+
+.media-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.media-artist {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-tertiary);
+}
+
+.media-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.media-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(121, 191, 96, 0.08);
+  border: 1px solid rgba(121, 191, 96, 0.12);
+  color: var(--clock-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.media-btn:hover:not(:disabled) {
+  background: rgba(121, 191, 96, 0.18);
+}
+
+.media-btn:disabled {
+  cursor: default;
+}
+
+.media-btn .mdi {
+  font-size: 13px;
+}
+
+.lyrics-container {
+  width: 100%;
+  max-height: 40px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.lyric-line {
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  padding: 1px 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lyric-line.current {
+  color: var(--text-primary);
+  font-weight: 600;
+}

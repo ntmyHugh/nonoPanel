@@ -1,0 +1,255 @@
+:root {
+  --cal-cell-h: 52px;
+  --cal-gap: 8px;
+  --holiday-color: #ff8a3d;
+  --offwork-color: #5eb6d8;
+  --work-adjust-color: #fbbf24;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.calendar-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.week-pill {
+  font-size: 14px;
+  padding: 7px 14px;
+  background: linear-gradient(145deg, rgba(248, 229, 181, 0.96), rgba(236, 196, 104, 0.94));
+  border: 1px solid rgba(205, 165, 70, 0.22);
+  color: var(--calendar-accent-strong);
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  box-shadow: 6px 8px 14px rgba(199, 173, 115, 0.16), -2px -2px 8px rgba(255, 255, 255, 0.68);
+}
+
+.calendar-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.cal-nav-btn {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(145deg, rgba(247, 227, 174, 0.96), rgba(234, 193, 90, 0.94));
+  border: 1px solid rgba(205, 165, 70, 0.2);
+  color: var(--calendar-accent-strong);
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 6px 8px 14px rgba(199, 173, 115, 0.16), -2px -2px 8px rgba(255, 255, 255, 0.68);
+  transition: var(--transition);
+}
+
+.cal-nav-btn:hover {
+  background: linear-gradient(145deg, rgba(249, 232, 186, 1), rgba(238, 201, 104, 0.98));
+  border-color: rgba(205, 165, 70, 0.3);
+  color: var(--calendar-accent-strong);
+}
+
+.week-header-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--cal-gap);
+  margin-bottom: 8px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.week-header {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.week-header:first-child,
+.week-header:last-child {
+  color: var(--blossom);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--cal-gap);
+  flex: 1;
+  grid-auto-rows: var(--cal-cell-h);
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.cal-cell {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 5px;
+  padding: 8px 9px 7px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(248, 229, 180, 0.94), rgba(235, 202, 114, 0.92));
+  border: 1px solid rgba(205, 165, 70, 0.14);
+  overflow: hidden;
+  box-shadow: 6px 8px 14px rgba(199, 173, 115, 0.14), -2px -2px 8px rgba(255, 255, 255, 0.66);
+  transition: border-color var(--transition), background var(--transition);
+  cursor: default;
+}
+
+.cal-cell:hover:not(.today) {
+  background: linear-gradient(145deg, rgba(250, 234, 192, 0.98), rgba(238, 207, 122, 0.96));
+  border-color: rgba(205, 165, 70, 0.24);
+}
+
+.cal-cell.dim {
+  opacity: 0.4;
+}
+
+.cal-cell.dim .lunar,
+.cal-cell.dim .badge,
+.cal-cell.dim .meta-note {
+  display: none;
+}
+
+.cal-cell.today {
+  background: linear-gradient(145deg, #fff7dc, #f6d76a 58%, #f1b84d 100%);
+  border-color: rgba(190, 142, 31, 0.34);
+  box-shadow: 0 0 0 3px rgba(239, 188, 71, 0.22), 8px 12px 20px rgba(210, 178, 104, 0.22);
+}
+
+.cal-cell.today .date-num {
+  color: #6f4f0c;
+  font-weight: 800;
+}
+
+.cal-cell.today .lunar {
+  color: rgba(111, 79, 12, 0.7);
+}
+
+.cal-cell.today .meta-note {
+  color: rgba(111, 79, 12, 0.85);
+}
+
+.cal-cell.weekend .date-num {
+  color: var(--blossom);
+}
+
+.date-num {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1;
+  z-index: 2;
+  align-self: start;
+}
+
+.lunar {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  line-height: 1.2;
+  z-index: 2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  grid-row: 2;
+  align-self: start;
+}
+
+.meta-note {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.1;
+  z-index: 2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  grid-row: 2;
+  align-self: start;
+}
+
+.meta-note.festival {
+  color: #cb7d17;
+}
+
+.meta-note.term {
+  color: #4da46c;
+}
+
+.meta-note.solar {
+  color: var(--weather-accent-strong);
+}
+
+.cal-cell.has-meta .lunar {
+  display: none;
+}
+
+.cal-cell.simple .meta-note {
+  display: none;
+}
+
+.badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: linear-gradient(145deg, #ffb06a, #ff8a3d);
+  color: #4b2400;
+  z-index: 3;
+  line-height: 1;
+}
+
+.badge.rest {
+  background: linear-gradient(145deg, #ffd29e, #ff9b4a);
+  color: #5a2d00;
+}
+
+.badge.work {
+  background: linear-gradient(145deg, #ff9f9f, #ef4444);
+  color: #ffffff;
+}
+
+.cal-cell.holiday::after,
+.cal-cell.work-adjust::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--holiday-color);
+}
+
+.cal-cell.work-adjust::after {
+  background: var(--work-adjust-color);
+}
