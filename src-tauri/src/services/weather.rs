@@ -7,9 +7,10 @@ use tokio::sync::Mutex;
 use crate::error::AppError;
 use crate::models::weather::*;
 
-fn api_key() -> String {
-    std::env::var("QWEATHER_API_KEY")
-        .unwrap_or_else(|_| String::new())
+// Embed QWEATHER_API_KEY at compile time via env var
+// Set before building: set QWEATHER_API_KEY=your_key && cargo build
+fn api_key() -> &'static str {
+    option_env!("QWEATHER_API_KEY").unwrap_or("")
 }
 const BASE_URL: &str = "https://ph3jpfvumh.re.qweatherapi.com";
 
