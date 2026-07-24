@@ -71,7 +71,7 @@ impl WeatherClient {
         }
 
         // Strip key from log for safety
-        let safe_url = url.as_str().replace(API_KEY, "***");
+        let safe_url = url.as_str().replace(api_key(), "***");
         log::info!("QWeather GET {}", safe_url);
 
         let resp = self
