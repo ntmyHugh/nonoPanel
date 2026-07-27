@@ -68,24 +68,3 @@
   font-size: 13px;
 }
 
-.lyrics-container {
-  width: 100%;
-  max-height: 40px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.lyric-line {
-  text-align: center;
-  font-size: 11px;
-  color: var(--text-tertiary);
-  padding: 1px 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.lyric-line.current {
-  color: var(--text-primary);
-  font-weight: 600;
-}

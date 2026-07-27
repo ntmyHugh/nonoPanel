@@ -483,7 +483,17 @@
       }
 
       this.render();
-      requestAnimationFrame(this.loop.bind(this));
+
+      // Throttle: only animate at full rate when moving; idle/sleep use slow poll
+      var needsFullFrame = this.isDragging || this.isReturningToLane || this.state === 'walk' || this.state === 'interact';
+      if (needsFullFrame) {
+        requestAnimationFrame(this.loop.bind(this));
+      } else {
+        clearTimeout(this._loopTimer);
+        this._loopTimer = setTimeout(function(self) {
+          requestAnimationFrame(self.loop.bind(self));
+        }, 200, this);
+      }
     }
 
     makeAutonomousDecision(timestamp) {
