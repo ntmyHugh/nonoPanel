@@ -5,13 +5,16 @@ use tauri::{
 };
 
 pub fn init_tray(app_handle: &tauri::AppHandle) -> tauri::Result<()> {
-    let show_item = MenuItemBuilder::with_id("show", "显示/隐藏")
+    let show_item = MenuItemBuilder::with_id("show", "显示")
+        .build(app_handle)?;
+    let hide_item = MenuItemBuilder::with_id("hide", "隐藏")
         .build(app_handle)?;
     let quit_item = MenuItemBuilder::with_id("quit", "退出")
         .build(app_handle)?;
 
     let menu = MenuBuilder::new(app_handle)
         .item(&show_item)
+        .item(&hide_item)
         .separator()
         .item(&quit_item)
         .build()?;
@@ -32,15 +35,13 @@ pub fn init_tray(app_handle: &tauri::AppHandle) -> tauri::Result<()> {
             match event.id().as_ref() {
                 "show" => {
                     if let Some(window) = app.get_webview_window("main") {
-                        match window.is_visible() {
-                            Ok(true) => {
-                                let _ = window.hide();
-                            }
-                            _ => {
-                                let _ = window.show();
-                                let _ = window.set_focus();
-                            }
-                        }
+                        let _ = window.show();
+                        let _ = window.set_focus();
+                    }
+                }
+                "hide" => {
+                    if let Some(window) = app.get_webview_window("main") {
+                        let _ = window.hide();
                     }
                 }
                 "quit" => {
